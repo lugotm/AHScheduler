@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .controller('LoginController', function ($rootScope, $scope, $state, $timeout, Auth) {
         $scope.user = {};
         $scope.errors = {};

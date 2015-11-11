@@ -1,18 +1,18 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .factory('Password', function ($resource) {
         return $resource('api/account/change_password', {}, {
         });
     });
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .factory('PasswordResetInit', function ($resource) {
         return $resource('api/account/reset_password/init', {}, {
         })
     });
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .factory('PasswordResetFinish', function ($resource) {
         return $resource('api/account/reset_password/finish', {}, {
         })

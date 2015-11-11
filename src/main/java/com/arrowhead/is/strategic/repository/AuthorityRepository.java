@@ -1,6 +1,7 @@
 package com.arrowhead.is.strategic.repository;
 
 import com.arrowhead.is.strategic.domain.Authority;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

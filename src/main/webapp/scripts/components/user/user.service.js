@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .factory('User', function ($resource) {
         return $resource('api/users/:login', {}, {
                 'query': {method: 'GET', isArray: true},
@@ -10,6 +10,7 @@ angular.module('ahschedulerApp')
                         data = angular.fromJson(data);
                         return data;
                     }
-                }
+                },
+                'update': { method:'PUT' }
             });
         });

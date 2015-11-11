@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .filter('characters', function () {
         return function (input, chars, breakOnWord) {
             if (isNaN(chars)) {

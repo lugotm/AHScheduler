@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .controller('PasswordController', function ($scope, Auth, Principal) {
         Principal.identity().then(function(account) {
             $scope.account = account;

@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .config(function ($stateProvider) {
         $stateProvider
             .state('settings', {
                 parent: 'account',
                 url: '/settings',
                 data: {
-                    roles: ['ROLE_USER'],
+                    authorities: ['ROLE_USER'],
                     pageTitle: 'Settings'
                 },
                 views: {

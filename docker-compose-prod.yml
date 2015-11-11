@@ -1,0 +1,11 @@
+jhipster-prod-postgresql:
+  container_name: AHscheduler-prod-postgresql
+  image: postgres:9.4.5
+  # volumes:
+  # - ~/volumes/jhipster/AHscheduler/prod-postgresql/:/var/lib/postgresql/
+  environment:
+  - POSTGRES_USER=AHscheduler
+  - POSTGRES_PASSWORD=
+  ports:
+  - "5432:5432"
+

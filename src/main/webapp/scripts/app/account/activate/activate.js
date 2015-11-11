@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .config(function ($stateProvider) {
         $stateProvider
             .state('activate', {
                 parent: 'account',
                 url: '/activate?key',
                 data: {
-                    roles: [],
+                    authorities: [],
                     pageTitle: 'Activation'
                 },
                 views: {
@@ -21,4 +21,3 @@ angular.module('ahschedulerApp')
                 }
             });
     });
-

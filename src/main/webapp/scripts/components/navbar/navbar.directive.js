@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .directive('activeLink', function(location) {
         return {
             restrict: 'A',

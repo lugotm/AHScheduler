@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .config(function ($stateProvider) {
         $stateProvider
             .state('login', {
                 parent: 'account',
                 url: '/login',
                 data: {
-                    roles: [], 
-                    pageTitle: 'Authentication'
+                    authorities: [], 
+                    pageTitle: 'Sign in'
                 },
                 views: {
                     'content@': {

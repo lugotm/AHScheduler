@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .factory('Register', function ($resource) {
         return $resource('api/register', {}, {
         });

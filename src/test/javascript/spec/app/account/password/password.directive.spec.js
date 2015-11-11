@@ -2,8 +2,6 @@
 
 describe('Directive Tests ', function () {
 
-    beforeEach(module('ahschedulerApp'));
-
     var elm, scope, $httpBackend;
 
     beforeEach(inject(function($compile, $rootScope, $injector) {
@@ -14,10 +12,9 @@ describe('Directive Tests ', function () {
         elm = angular.element(html);
         $compile(elm)(scope);
 
-        $httpBackend.expectGET(/api\/account\?cacheBuster=\d+/).respond({});
-        $httpBackend.expectGET('scripts/components/navbar/navbar.html').respond({});
-        
-        $httpBackend.expectGET('scripts/app/main/main.html').respond({});
+        $httpBackend.whenGET(/api\/account\?cacheBuster=\d+/).respond({});
+        $httpBackend.whenGET('scripts/app/main/main.html').respond({});
+        $httpBackend.whenGET('scripts/components/navbar/navbar.html').respond({});
     }));
 
     afterEach(function() {

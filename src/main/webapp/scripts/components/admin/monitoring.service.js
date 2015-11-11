@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .factory('MonitoringService', function ($rootScope, $http) {
         return {
             getMetrics: function () {

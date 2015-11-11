@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('ahschedulerApp', ['LocalStorageModule', 
+angular.module('aHschedulerApp', ['LocalStorageModule', 
                'ui.bootstrap', // for modal dialogs
-    'ngResource', 'ui.router', 'ngCookies', 'ngCacheBuster', 'infinite-scroll'])
+    'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll', 'angular-loading-bar'])
 
     .run(function ($rootScope, $location, $window, $http, $state,  Auth, Principal, ENV, VERSION) {
+        
         $rootScope.ENV = ENV;
         $rootScope.VERSION = VERSION;
         $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
@@ -18,10 +19,16 @@ angular.module('ahschedulerApp', ['LocalStorageModule',
         });
 
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
-            var titleKey = 'ahscheduler' ;
+            var titleKey = 'AHscheduler' ;
 
-            $rootScope.previousStateName = fromState.name;
-            $rootScope.previousStateParams = fromParams;
+            // Remember previous state unless we've been redirected to login or we've just
+            // reset the state memory after logout. If we're redirected to login, our
+            // previousState is already set in the authExpiredInterceptor. If we're going
+            // to login directly, we don't want to be sent to some previous state anyway
+            if (toState.name != 'login' && $rootScope.previousStateName) {
+              $rootScope.previousStateName = fromState.name;
+              $rootScope.previousStateParams = fromParams;
+            }
 
             // Set the page title key to the one configured in state or use default one
             if (toState.data.pageTitle) {
@@ -29,7 +36,7 @@ angular.module('ahschedulerApp', ['LocalStorageModule',
             }
             $window.document.title = titleKey;
         });
-
+        
         $rootScope.back = function() {
             // If previous state is 'activate' or do not exist go to 'home'
             if ($rootScope.previousStateName === 'activate' || $state.get($rootScope.previousStateName) === null) {
@@ -39,26 +46,9 @@ angular.module('ahschedulerApp', ['LocalStorageModule',
             }
         };
     })
-    .factory('authExpiredInterceptor', function ($rootScope, $q, $injector, localStorageService) {
-        return {
-            responseError: function(response) {
-                // If we have an unauthorized request we redirect to the login page
-                // Don't do this check on the account API to avoid infinite loop
-                if (response.status == 401 && response.data.path !== undefined && response.data.path.indexOf("/api/account") == -1){  
-                    var Auth = $injector.get('Auth');
-                    var $state = $injector.get('$state');
-                    var to = $rootScope.toState;
-                    var params = $rootScope.toStateParams;
-                    Auth.logout();
-                    $rootScope.returnToState = to;
-                    $rootScope.returnToStateParams = params;
-                    $state.go('login');    
-                }       
-                return $q.reject(response);
-            }
-        };
-    })
-    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider,  httpRequestInterceptorCacheBusterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider,  httpRequestInterceptorCacheBusterProvider, AlertServiceProvider) {
+        // uncomment below to make alerts look like toast
+        //AlertServiceProvider.showAsToast(true);
 
         //enable CSRF
         $httpProvider.defaults.xsrfCookieName = 'CSRF-TOKEN';
@@ -85,7 +75,18 @@ angular.module('ahschedulerApp', ['LocalStorageModule',
             }
         });
 
+        $httpProvider.interceptors.push('errorHandlerInterceptor');
         $httpProvider.interceptors.push('authExpiredInterceptor');
-
+        $httpProvider.interceptors.push('notificationInterceptor');
         
-    });
+    })
+    .config(['$urlMatcherFactoryProvider', function($urlMatcherFactory) {
+        $urlMatcherFactory.type('boolean', {
+            name : 'boolean',
+            decode: function(val) { return val == true ? true : val == "true" ? true : false },
+            encode: function(val) { return val ? 1 : 0; },
+            equals: function(a, b) { return this.is(a) && a === b; },
+            is: function(val) { return [true,false,0,1].indexOf(val) >= 0 },
+            pattern: /bool|true|0|1/
+        });
+    }]);;

@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .config(function ($stateProvider) {
         $stateProvider
             .state('error', {
                 parent: 'site',
                 url: '/error',
                 data: {
-                    roles: [],
+                    authorities: [],
                     pageTitle: 'Error page!'
                 },
                 views: {
@@ -23,7 +23,7 @@ angular.module('ahschedulerApp')
                 parent: 'site',
                 url: '/accessdenied',
                 data: {
-                    roles: []
+                    authorities: []
                 },
                 views: {
                     'content@': {

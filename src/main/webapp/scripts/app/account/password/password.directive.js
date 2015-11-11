@@ -1,7 +1,7 @@
 /* globals $ */
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .directive('passwordStrengthBar', function () {
         return {
             replace: true,

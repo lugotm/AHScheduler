@@ -2,7 +2,7 @@ package com.arrowhead.is.strategic.repository;
 
 import com.arrowhead.is.strategic.domain.PersistentToken;
 import com.arrowhead.is.strategic.domain.User;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 /* globals $ */
 'use strict';
 
-angular.module('ahschedulerApp')
+angular.module('aHschedulerApp')
     .directive('showValidation', function() {
         return {
             restrict: 'A',

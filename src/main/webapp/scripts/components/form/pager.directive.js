@@ -1,8 +1,8 @@
 /* globals $ */
 'use strict';
 
-angular.module('ahschedulerApp')
-    .directive('ahschedulerAppPager', function() {
+angular.module('aHschedulerApp')
+    .directive('aHschedulerAppPager', function() {
         return {
             templateUrl: 'scripts/components/form/pager.html'
         };

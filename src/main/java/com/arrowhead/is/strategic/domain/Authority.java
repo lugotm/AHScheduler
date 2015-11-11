@@ -1,7 +1,6 @@
 package com.arrowhead.is.strategic.domain;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -14,8 +13,7 @@ import java.io.Serializable;
  * An authority (a security role) used by Spring Security.
  */
 @Entity
-@Table(name = "JHI_AUTHORITY")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Table(name = "jhi_authority")
 public class Authority implements Serializable {
 
     @NotNull
@@ -58,7 +56,7 @@ public class Authority implements Serializable {
     @Override
     public String toString() {
         return "Authority{" +
-                "name='" + name + '\'' +
-                "}";
+            "name='" + name + '\'' +
+            "}";
     }
 }
