@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "ahscheduler",
+    "packageName": "com.arrowhead.is.strategic",
+    "packageFolder": "com/arrowhead/is/strategic",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "no",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": false,
+    "rememberMeKey": "c88c49fd66b0ee2dc41e9ea285ba01719676ed7d"
+  }
+}
