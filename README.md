@@ -1,20 +1,33 @@
-# Developing AHscheduler
+# What is AH Scheduler?
 
-This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
+AH Scehduler is a distributed web application built with [JHipster](http://jhipster.github.io/) and designed to schedule weekly in-house speaking events. This example has been deployed to a PaaS (Platform-as-a-Service) Heroku at: [https://a-hscheduler.herokuapp.com/](https://a-hscheduler.herokuapp.com/)
+
+# Setting up your environment
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
 
-1. [Node.js][]: We use Node to run a development web server and build the project.
-   Depending on your system, you can install Node either from source or as a pre-packaged bundle.
+*Note:* If you are on a Windows system, you will need to install Git *BEFORE* you install Node.js and run ALL commands in Git Bash shell.
 
-After installing Node, you should be able to run the following command to install development tools (like
-[Bower][] and [BrowserSync][]). You will only need to run this command when dependencies change in package.json.
+1. Java 8 from [the Oracle website](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+2. Maven 3 from [the Apache website](http://maven.apache.org/)
+3. Git from [git-scm.com](http://git-scm.com/) (highly recommend using a GUI like [SourceTree](http://www.sourcetreeapp.com/) or [some other GUIs](https://git-scm.com/downloads/guis) if you're not comfortable yet with cmd line)
+4. Node.js from [the Node.js website](http://nodejs.org/). It will allow you to install packages with `npm` in Git Bash shell.
+5. Open Git Bash shell and type `npm install -g yo` which will install [Yeoman](http://yeoman.io/), a scaffolding tool for web apps.
+6. Install [Bower](http://bower.io), a package manager similar to NPM: `npm install -g bower`
+7. Install [Grunt](http://gruntjs.com/), a JS task runner: `npm install -g grunt-cli`
+8. Download and Install [PostgreSQL](http://www.postgresql.org/download/)
+9. (Optional) Install [Heroku](http://heroku.com), if you'd like to deploy your app to a server. You can also deploy to 
+[Cloud Foundry](http://cloudfoundry.org/), [OpenShift](https://www.openshift.com/), [AWS](https://aws.amazon.com/), or
+any number of PaaS or hosted services.
+8. (Optional) Install JHipster generator (check out more generators at [Yeoman Generators](http://yeoman.io/generators/): `npm install -g generator-jhipster`
+
+# Installing Dependencies
+
+After setting up your local environment and cloning this repo, you'll need to download all the client dependencies 
+(using NPM and Bower), as well as all the server dependencies (using Maven).
 
     npm install
-
-We use [Grunt][] as our build system. Install the grunt command-line tool globally with:
-
-    npm install -g grunt-cli
+    bower install
 
 Run the following commands in two separate terminals to create a blissful development experience where your browser
 auto-refreshes when files change on your hard drive.
