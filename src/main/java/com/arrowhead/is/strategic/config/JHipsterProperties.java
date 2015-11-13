@@ -23,8 +23,6 @@ public class JHipsterProperties {
 
     private final Cache cache = new Cache();
 
-    private final Mail mail = new Mail();
-
     private final Security security = new Security();
 
     private final Swagger swagger = new Swagger();
@@ -49,10 +47,6 @@ public class JHipsterProperties {
 
     public Cache getCache() {
         return cache;
-    }
-
-    public Mail getMail() {
-        return mail;
     }
 
     public Security getSecurity() {
@@ -180,19 +174,6 @@ public class JHipsterProperties {
 
         public void setTimeToLiveSeconds(int timeToLiveSeconds) {
             this.timeToLiveSeconds = timeToLiveSeconds;
-        }
-    }
-
-    public static class Mail {
-
-        private String from = "AHscheduler@localhost";
-
-        public String getFrom() {
-            return from;
-        }
-
-        public void setFrom(String from) {
-            this.from = from;
         }
     }
 

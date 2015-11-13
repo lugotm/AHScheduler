@@ -1,14 +1,22 @@
 package com.arrowhead.is.strategic.web.rest;
 
-import com.arrowhead.is.strategic.Application;
-import com.arrowhead.is.strategic.domain.Authority;
-import com.arrowhead.is.strategic.domain.User;
-import com.arrowhead.is.strategic.repository.AuthorityRepository;
-import com.arrowhead.is.strategic.repository.UserRepository;
-import com.arrowhead.is.strategic.security.AuthoritiesConstants;
-import com.arrowhead.is.strategic.service.MailService;
-import com.arrowhead.is.strategic.service.UserService;
-import com.arrowhead.is.strategic.web.rest.dto.UserDTO;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.StrictAssertions.assertThat;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,18 +31,14 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import javax.inject.Inject;
-import javax.transaction.Transactional;
-import java.util.*;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Matchers.anyObject;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.arrowhead.is.strategic.Application;
+import com.arrowhead.is.strategic.domain.Authority;
+import com.arrowhead.is.strategic.domain.User;
+import com.arrowhead.is.strategic.repository.AuthorityRepository;
+import com.arrowhead.is.strategic.repository.UserRepository;
+import com.arrowhead.is.strategic.security.AuthoritiesConstants;
+import com.arrowhead.is.strategic.service.UserService;
+import com.arrowhead.is.strategic.web.rest.dto.UserDTO;
 
 /**
  * Test class for the AccountResource REST controller.
@@ -59,8 +63,8 @@ public class AccountResourceIntTest {
     @Mock
     private UserService mockUserService;
 
-    @Mock
-    private MailService mockMailService;
+//    @Mock
+//    private MailService mockMailService;
 
     private MockMvc restUserMockMvc;
 
@@ -69,17 +73,17 @@ public class AccountResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        doNothing().when(mockMailService).sendActivationEmail((User) anyObject(), anyString());
+//        doNothing().when(mockMailService).sendActivationEmail((User) anyObject(), anyString());
 
         AccountResource accountResource = new AccountResource();
         ReflectionTestUtils.setField(accountResource, "userRepository", userRepository);
         ReflectionTestUtils.setField(accountResource, "userService", userService);
-        ReflectionTestUtils.setField(accountResource, "mailService", mockMailService);
+//        ReflectionTestUtils.setField(accountResource, "mailService", mockMailService);
 
         AccountResource accountUserMockResource = new AccountResource();
         ReflectionTestUtils.setField(accountUserMockResource, "userRepository", userRepository);
         ReflectionTestUtils.setField(accountUserMockResource, "userService", mockUserService);
-        ReflectionTestUtils.setField(accountUserMockResource, "mailService", mockMailService);
+//        ReflectionTestUtils.setField(accountUserMockResource, "mailService", mockMailService);
 
         this.restMvc = MockMvcBuilders.standaloneSetup(accountResource).build();
         this.restUserMockMvc = MockMvcBuilders.standaloneSetup(accountUserMockResource).build();
