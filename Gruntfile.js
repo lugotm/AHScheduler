@@ -60,7 +60,7 @@ module.exports = function (grunt) {
                     'bower_components/bootstrap/' // Exclude Bootstrap LESS as we use bootstrap-sass
                 ],
                 ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files 
-            },
+            }/*,
             test: {
                 src: 'src/test/javascript/karma.conf.js',
                 exclude: [/angular-i18n/, /angular-scenario/],
@@ -77,7 +77,7 @@ module.exports = function (grunt) {
                         }
                     }
                 }
-            }
+            }*/
         },
         browserSync: {
             dev: {
@@ -285,12 +285,12 @@ module.exports = function (grunt) {
                 ]
             }
         },
-        karma: {
+        /*karma: {
             unit: {
                 configFile: 'src/test/javascript/karma.conf.js',
                 singleRun: true
             }
-        },
+        },*/
         ngAnnotate: {
             dist: {
                 files: [{
@@ -359,10 +359,9 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
-        'wiredep:test',
         'ngconstant:dev',
-        'sass:server',
-        'karma'
+        'sass:server'
+        //'karma'
     ]);
 
     grunt.registerTask('build', [
