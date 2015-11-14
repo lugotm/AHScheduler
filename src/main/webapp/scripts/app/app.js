@@ -46,6 +46,8 @@ angular.module('aHschedulerApp', ['LocalStorageModule',
             }
         };
     })
+    
+    /*
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider,  httpRequestInterceptorCacheBusterProvider, AlertServiceProvider) {
         // uncomment below to make alerts look like toast
         //AlertServiceProvider.showAsToast(true);
@@ -53,11 +55,14 @@ angular.module('aHschedulerApp', ['LocalStorageModule',
         //enable CSRF
         $httpProvider.defaults.xsrfCookieName = 'CSRF-TOKEN';
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
-
+*/
         //Cache everything except rest api requests
-        httpRequestInterceptorCacheBusterProvider.setMatchlist([/.*api.*/, /.*protected.*/], true);
+        //httpRequestInterceptorCacheBusterProvider.setMatchlist([/.*api.*/, /.*protected.*/], true);
 
+    /*
         $urlRouterProvider.otherwise('/');
+        
+        
         $stateProvider.state('site', {
             'abstract': true,
             views: {
@@ -74,12 +79,16 @@ angular.module('aHschedulerApp', ['LocalStorageModule',
                 ]
             }
         });
-
+		
+        
+		
         $httpProvider.interceptors.push('errorHandlerInterceptor');
         $httpProvider.interceptors.push('authExpiredInterceptor');
         $httpProvider.interceptors.push('notificationInterceptor');
         
     })
+    
+    */
     .config(['$urlMatcherFactoryProvider', function($urlMatcherFactory) {
         $urlMatcherFactory.type('boolean', {
             name : 'boolean',

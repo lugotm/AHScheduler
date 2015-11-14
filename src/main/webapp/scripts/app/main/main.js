@@ -4,7 +4,7 @@ angular.module('aHschedulerApp')
     .config(function ($stateProvider) {
         $stateProvider
             .state('home', {
-                parent: 'site',
+//                parent: 'site',
                 url: '/',
                 data: {
                     authorities: []
